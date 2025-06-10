@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="container mt-5">
+    <h1 class="display-5 fw-bold text-center text-primary mb-4">@ViewBag.DynamicGreeting</h1>
+
+    <div class="row">
+        <!-- Latest Workouts -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    Latest Workouts
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var workout in Model.LatestWorkouts)
+                    {
+                        <li class="list-group-item">
+                            <strong>@workout.Date.ToShortDateString()</strong> - @workout.ExerciseName <span class="text-muted">(@workout.Weight lbs)</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <!-- Active Goals -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    Active Goals
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var goal in Model.ActiveGoals)
+                    {
+                        <li class="list-group-item">
+                            <strong>@goal.GoalTitle:</strong> @goal.TargetValue @goal.Unit by @goal.TargetDate.ToShortDateString()
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Chart Preview -->
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-info text-white">
+            Progress Chart Preview
+        </div>
+        <div class="card-body text-center">
+            <img src="@Url.Action("ProgressChartPreview", "RepVaultWorkout")" class="img-fluid" alt="Progress Chart Preview" />
+        </div>
+    </div>
+</section>

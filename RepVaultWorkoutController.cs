@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RepVault.Data;
 using RepVault.Models;
+using System.Web.Helpers;
 
 namespace RepVault.Controllers
 {
@@ -66,6 +67,26 @@ namespace RepVault.Controllers
 
             return View();
         }
+
+        //public IActionResult ProgressChartPreview()
+        //{
+        //    var userId = _userManager.GetUserId(User);
+        //    var data = _context.RepVaultWorkouts
+        //        .Where(w => w.UserId == userId && w.ExerciseName == "Bench Press")
+        //        .OrderBy(w => w.Date)
+        //        .ToList();
+
+        //    var chart = new Chart(width: 600, height: 300)
+        //        .AddTitle("Bench Press Progress")
+        //        .AddSeries(
+        //            name: "Weight",
+        //            xValue: data.Select(x => x.Date.ToShortDateString()),
+        //            yValues: data.Select(x => x.Weight))
+        //        .Write("png");
+
+        //    return File(chart.GetBytes(), "image/png");
+        //}
+
 
 
 
